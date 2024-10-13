@@ -10,7 +10,7 @@ The hotel booking dashboard allows users to select a date range, specify the num
 ### Installation
 To run the client side of the Online Exam Portal locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/zafaralikhan2038/12104685_frontend.git`
+1. Clone the repository: `git clone https://github.com/zafaralikhan2038/12108344_frontend.git`
 2. Install the dependencies: `npm install`
 3. Start the development server: `npm run dev`
 4. Open your browser and visit: `http://localhost:5173/`
