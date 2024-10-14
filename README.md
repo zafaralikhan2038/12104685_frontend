@@ -1,10 +1,10 @@
 # Hotel Booking Dashboard
 The hotel booking dashboard allows users to select a date range, specify the number of adults and children, track daily visitor counts, and view visitor statistics by country for enhanced planning.
 
-### Weblink: [Live Website]()
+### Weblink: [Live Website](https://one2108344-frontend.onrender.com)
 
 ## Dashboard:
-<img width="450px;" src="https://res.cloudinary.com/dbl03sf0r/image/upload/v1728827195/dashboard_pgbqlw.png"/>
+<img width="1000px;" src="https://res.cloudinary.com/dbl03sf0r/image/upload/v1728827195/dashboard_pgbqlw.png"/>
 
 
 ### Installation
