@@ -1,13 +1,23 @@
 import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
-const ColumnChart = ({ data }) => {
+interface ColumnChartProps {
+  data: {
+    adults: number;
+    children: number;
+    babies: number;
+    country: string;
+  }[];
+}
+
+const ColumnChart: React.FC<ColumnChartProps> = ({ data }) => {
   const totalVisitorsOverall = data.reduce(
     (acc, item) =>
       acc + (+item.adults || 0) + (+item.children || 0) + (+item.babies || 0),
     0
   );
 
-  const countryData = data.reduce((acc, item) => {
+  const countryData = data.reduce<Record<string, number>>((acc, item) => {
     const totalVisitors =
       (+item.adults || 0) + (+item.children || 0) + (+item.babies || 0);
 
@@ -22,11 +32,11 @@ const ColumnChart = ({ data }) => {
   const series = [
     {
       name: "Visitors (%)",
-      data: percentages,
+      data: percentages.map(Number),
     },
   ];
 
-  const options = {
+  const options: ApexOptions = {
     chart: {
       type: "bar",
       toolbar: { show: false },
@@ -39,7 +49,7 @@ const ColumnChart = ({ data }) => {
     },
     yaxis: {
       labels: {
-        formatter: (val) => `${val}%`,
+        formatter: (val: number) => `${val.toFixed(2)}%`,
         style: {
           colors: "#374151",
         },
@@ -62,7 +72,7 @@ const ColumnChart = ({ data }) => {
     },
     dataLabels: {
       enabled: true,
-      formatter: (val) => `${val}%`,
+      formatter: (val: number) => `${val.toFixed(2)}%`,
       style: {
         colors: ["#000"],
       },

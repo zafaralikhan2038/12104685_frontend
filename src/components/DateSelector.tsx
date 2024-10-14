@@ -2,14 +2,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
 
-const DateSelector = ({ onDateChange }) => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+interface DateSelectorProps {
+  onDateChange: (start: Date | null, end: Date | null) => void;
+}
+
+const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange }) => {
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
+  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
   const handleChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+    setStartDate(start ?? undefined);
+    setEndDate(end ?? undefined);
     onDateChange(start, end);
   };
 

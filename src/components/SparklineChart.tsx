@@ -1,12 +1,18 @@
 import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
-const SparklineChart = ({ data, label }) => {
+interface SparklineChartProps {
+  data: number[];
+  label: string;
+}
+
+const SparklineChart: React.FC<SparklineChartProps> = ({ data, label }) => {
   const series = [{ data }];
 
-  const options = {
+  const options: ApexOptions = {
     chart: { type: "line", sparkline: { enabled: true } },
-    colors: ['#001F3F'], // Green color for sparklines
-    title: { text: label, align: "center", offsetX: 10, style: { color: '#98FF98' } },
+    colors: ['#001F3F'],
+    title: { text: label, align: "center", offsetX: 10, style: { color: '#059669' } },
     stroke: { width: 2, curve: 'smooth' },
     grid: { borderColor: '#D1D5DB' },
   };

@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// /* eslint-disable @typescript-eslint/no-explicit-any */
-// /* eslint-disable @typescript-eslint/no-unused-vars */
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DateSelector from "./DateSelector";
@@ -9,13 +5,24 @@ import TimeSeriesChart from "./TimeSeriesChart";
 import ColumnChart from "./ColumnChart";
 import SparklineChart from "./SparklineChart";
 
+
+interface BookingData {
+  arrival_date_year: number;
+  arrival_date_month: string;
+  arrival_date_day_of_month: number;
+  adults: number;
+  children: number;
+  babies: number;
+  country: string;
+}
+
 function Dashboard() {
-  const [data, setData] = useState<any[]>([]);
-  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [data, setData] = useState<BookingData[]>([]);
+  const [filteredData, setFilteredData] = useState<BookingData[]>([]);
 
   useEffect(() => {
     axios
-      .get("/assets/hotel_bookings_1000.json")
+      .get<BookingData[]>("/assets/hotel_bookings_1000.json")
       .then((response) => setData(response.data))
       .catch((err) => console.error(err));
   }, []);
@@ -35,7 +42,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="p-6 bg-[#F0F8FF] min-h-screen">
+    <div className="p-6 bg-[#F3F4F6] min-h-screen">
       <div className="bg-[#F3F4F6] p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-6 text-center text-blue-950">Hotel Booking Dashboard</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
